@@ -48,7 +48,7 @@ Get all fitness classes with timezone conversion.
 
 **Example:**
 ```bash
-curl "http://localhost:8000/classes?timezone_param=America/New_York"
+curl "http://localhost:8000/api/fitness_classes/classes?timezone_param=America/New_York"
 ```
 
 ### POST /book
@@ -65,7 +65,7 @@ Book a fitness class.
 
 **Example:**
 ```bash
-curl -X POST "http://localhost:8000/book" \
+curl -X POST "http://localhost:8000/api/fitness_classes/book" \
   -H "Content-Type: application/json" \
   -d '{
     "class_id": 1,
@@ -84,7 +84,7 @@ Get user bookings by email.
 
 **Example:**
 ```bash
-curl "http://localhost:8000/bookings?email=john@example.com"
+curl "http://localhost:8000/api/fitness_classes/bookings?email=john@example.com"
 ```
 
 ## Architecture
@@ -93,20 +93,6 @@ curl "http://localhost:8000/bookings?email=john@example.com"
 - **UTC Storage**: All datetime values stored in UTC
 - **Timezone Conversion**: Dynamic conversion to any timezone
 - **Relationships**: Proper foreign key relationships between classes and bookings
-
-### Error Handling
-- **Validation Errors**: 422 for invalid input data
-- **Not Found**: 404 for non-existent resources
-- **Business Logic**: 400 for booking conflicts
-- **Server Errors**: 500 for unexpected errors
-
-### Best Practices Implemented
-- Pydantic models for data validation
-- Proper HTTP status codes
-- Structured logging
-- Database session management
-- Timezone-aware datetime handling
-- Clean code architecture
 
 ## Testing
 
