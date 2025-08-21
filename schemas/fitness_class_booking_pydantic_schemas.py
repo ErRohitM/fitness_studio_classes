@@ -13,13 +13,6 @@ class ClassBase(BaseModel):
     end_time: datetime
     capacity: int
 
-    @validator('start_time', 'end_time')
-    def validate_datetime(cls, v):
-        if v.tzinfo is None:
-
-            v = ist_tz.localize(v)
-        return v.astimezone(timezone.utc)
-
 
 class ClassResponse(ClassBase):
     id: int
